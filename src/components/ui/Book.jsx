@@ -17,7 +17,7 @@ const Book = ({ book }) => {
         if (mountedRef.current) {
           setImg(image);
         }
-      }, 700);
+      }, 100);
     };
     return () => {
       // When the component unmounts
