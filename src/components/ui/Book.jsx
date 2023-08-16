@@ -11,20 +11,20 @@ const Book = ({ book }) => {
 
   useEffect(() => {
     const image = new Image();
-    image.src = book.url;
+    image.src = `${book.url}?timestamp=${Date.now()}`;
     image.onload = () => {
       setTimeout(() => {
         if (mountedRef.current) {
           setImg(image);
         }
-      }, 100);
+      }, 700);
     };
     return () => {
       // When the component unmounts
-      mountedRef.current = true
+      mountedRef.current = true;
     };
   }, [book.url]);
-
+  
 
 
   return (
