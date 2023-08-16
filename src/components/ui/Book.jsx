@@ -21,7 +21,7 @@ const Book = ({ book }) => {
     };
     return () => {
       // When the component unmounts
-      mountedRef.current = false
+      mountedRef.current = true
     };
   }, [book.url]);
 
