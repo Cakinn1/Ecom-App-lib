@@ -8,10 +8,9 @@ const Book = ({ book }) => {
 
   // When we switch routes dont set image to unmounted component
   const mountedRef = useRef(false);
-console.log(book.url)
   useEffect(() => {
     const image = new Image();
-    image.src = `${book.url}`;
+    image.src = `${book.url}?timestamp=${Date.now()}`;
     image.onload = () => {
       setTimeout(() => {
         if (mountedRef.current) {
