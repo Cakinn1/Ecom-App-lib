@@ -19,7 +19,7 @@ const Book = ({ book }) => {
       }, 700);
     };
     return () => {
-      mountedRef.current = false;
+      mountedRef.current = true;
       // FOR THIS TO WORK ON LOCAL HOST MAKE SURE IT IS SET TO; mountedRef.current = true;
       // IF THIS IS ON; mountedRef.current = false, IT WILL WORK ON VERCEL IF NOT IT WILL NOT WORK.
     };
