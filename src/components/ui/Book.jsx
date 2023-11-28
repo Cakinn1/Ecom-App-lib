@@ -6,11 +6,11 @@ import Ratings from "../ui/Rating";
 const Book = ({ book }) => {
   const [img, setImg] = useState();
 
-  // When we switch routes dont set image to unmounted component
-  const mountedRef = useRef(false);
+  const mountedRef = useRef(true); 
+
   useEffect(() => {
     const image = new Image();
-    image.src = `${book.url}?timestamp=${Date.now()}`;
+    image.src = book.url;
     image.onload = () => {
       setTimeout(() => {
         if (mountedRef.current) {
@@ -19,12 +19,9 @@ const Book = ({ book }) => {
       }, 700);
     };
     return () => {
-      // When the component unmounts
-      mountedRef.current = true;
+      mountedRef.current = false; 
     };
   }, [book.url]);
-  
-
 
   return (
     <div className="book">
