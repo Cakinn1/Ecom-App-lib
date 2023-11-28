@@ -5,11 +5,15 @@ import { Link } from "react-router-dom";
 
 const Nav = ({ numberOfItems }) => {
   function openMenu() {
-    document.body.classList += " menu--open";
+    document.body.classList += "menu--open";
+    document.body.style.overflow = "hidden";
   }
 
-  function closeMenu() {
+  function closeMenu(event) {
+    event.stopPropagation()
     document.body.classList.remove("menu--open");
+    document.body.style.overflow = "auto";
+    console.log("hi");
   }
   return (
     <nav>
@@ -24,7 +28,13 @@ const Nav = ({ numberOfItems }) => {
             </Link>
           </li>
           <li className="nav__list">
-            <Link to="/books" className="nav__link">
+            <Link
+              to="/books"
+              onClick={(event) => {
+                  closeMenu(event);
+              }}
+              className="nav__link"
+            >
               Books
             </Link>
           </li>

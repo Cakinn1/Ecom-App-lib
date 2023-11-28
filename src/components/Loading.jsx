@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { FaSpinner } from "react-icons/fa";
 
 export default function Loading() {
+  const [isLoadingCompleted, setIsLoadingCompleted] = useState(false);
+
+  useEffect(() => {
+     setTimeout(() => {
+      setIsLoadingCompleted(true);
+      
+    }, 2000);
+  }, []);
+
+
   return (
-    <div
-      className="overflow-hidden min-h-screen w-full text-[#7342d6] flex justify-center items-center text-4xl"
-      style={{ backgroundColor: "rgba(115, 66, 214, 0.1)" }}
-    >
-      <h1>Loading...</h1>
-    </div>
+    <>
+      <div className={`loading   ${isLoadingCompleted && "animate__loading"}`}>
+        <FaSpinner className="animate__spin">Loading..</FaSpinner>
+      </div>
+    </>
   );
 }

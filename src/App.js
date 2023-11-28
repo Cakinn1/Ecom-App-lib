@@ -48,45 +48,43 @@ function App() {
 
   const [isLoading, setIsLoading] = useState(true);
 
-  // useEffect(() => {
-  //   setIsLoading(true);
 
-  //   setTimeout(() => {
-  //     setIsLoading(false);
-  //   }, 2000);
-  // }, []);
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    setTimeout(() => {
+      setIsLoading(false);
+      document.body.style.overflow = "auto";
+    }, 3000);
+  }, []);
 
   return (
     <Router>
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <div className="App">
-          <Nav numberOfItems={numberOfItems()} />
-          <Routes>
-            <Route path="/" exact element={<Home />} />
-            <Route path="/books" exact element={<Books books={books} />} />
-            <Route
-              path="/books/:id"
-              element={
-                <BookInfo books={books} addToCart={addToCart} cart={cart} />
-              }
-            />
-            <Route
-              path="/cart"
-              element={
-                <Cart
-                  books={books}
-                  cart={cart}
-                  changeQuantity={changeQuantity}
-                  removeItem={removeItem}
-                />
-              }
-            />
-          </Routes>
-          <Footer />
-        </div>
-      )}
+      <div className="App">
+        {isLoading && <Loading />}
+        <Nav numberOfItems={numberOfItems()} />
+        <Routes>
+          <Route path="/" exact element={<Home />} />
+          <Route path="/books" exact element={<Books books={books} />} />
+          <Route
+            path="/books/:id"
+            element={
+              <BookInfo books={books} addToCart={addToCart} cart={cart} />
+            }
+          />
+          <Route
+            path="/cart"
+            element={
+              <Cart
+                books={books}
+                cart={cart}
+                changeQuantity={changeQuantity}
+                removeItem={removeItem}
+              />
+            }
+          />
+        </Routes>
+        <Footer />
+      </div>
     </Router>
   );
 }
