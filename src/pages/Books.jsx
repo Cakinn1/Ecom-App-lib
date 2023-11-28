@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Book from "../components/ui/Book";
 // import { books } from "../data";
 
@@ -32,6 +32,10 @@ const Books = ({ books: initialBooks }) => {
       setBooks(books.slice().sort((a, b) => b.rating - a.rating));
     }
   }
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, []);
 
   return (
     <div id="books__body">

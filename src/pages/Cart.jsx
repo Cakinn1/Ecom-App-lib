@@ -11,10 +11,9 @@ const Cart = ({ cart, changeQuantity, book, removeItem }) => {
     return price;
   };
 
-  //   function removeItem(item) {
-  //     setCart
-  //   }
-
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, []);
   return (
     <div id="books__body">
       <main id="books__main">

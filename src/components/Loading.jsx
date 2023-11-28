@@ -5,16 +5,14 @@ export default function Loading() {
   const [isLoadingCompleted, setIsLoadingCompleted] = useState(false);
 
   useEffect(() => {
-     setTimeout(() => {
+    setTimeout(() => {
       setIsLoadingCompleted(true);
-      
     }, 2000);
   }, []);
 
-
   return (
     <>
-      <div className={`loading   ${isLoadingCompleted && "animate__loading"}`}>
+      <div className={`loading ${isLoadingCompleted && "animate__loading"}`}>
         <FaSpinner className="animate__spin">Loading..</FaSpinner>
       </div>
     </>
