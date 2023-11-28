@@ -49,6 +49,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   // add thatif window.onload (we just reloaded the page that we go to the top 0 pixels)
+  // add if yo click on a button to load at the very top of the screen
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "auto" });
     document.body.style.overflow = "hidden";
