@@ -50,7 +50,9 @@ function App() {
 
   // add thatif window.onload (we just reloaded the page that we go to the top 0 pixels)
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
     document.body.style.overflow = "hidden";
+
     setTimeout(() => {
       setIsLoading(false);
       document.body.style.overflow = "auto";
