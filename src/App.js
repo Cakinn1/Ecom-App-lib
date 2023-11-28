@@ -48,7 +48,7 @@ function App() {
 
   const [isLoading, setIsLoading] = useState(true);
 
-
+  // add thatif window.onload (we just reloaded the page that we go to the top 0 pixels)
   useEffect(() => {
     document.body.style.overflow = "hidden";
     setTimeout(() => {

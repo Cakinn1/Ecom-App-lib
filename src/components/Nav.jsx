@@ -1,20 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import LibraryLogo from "../assets/Library.svg";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { closeModal, openModal } from "../modal/modalSlice";
+
+function closeMenu() {
+  document.body.classList.remove("menu--open");
+  document.body.style.overflow = "auto";
+}
 
 const Nav = ({ numberOfItems }) => {
+  const [showMenu, setShowMenu] = useState(false);
+
   function openMenu() {
+    setShowMenu(true);
     document.body.classList += "menu--open";
     document.body.style.overflow = "hidden";
   }
 
-  function closeMenu(event) {
-    event.stopPropagation()
-    document.body.classList.remove("menu--open");
-    document.body.style.overflow = "auto";
-    console.log("hi");
-  }
+  useEffect(() => {
+    const handleMenuClose = () => {
+      if (!document.body.classList.contains("menu--open")) {
+        setShowMenu(false);
+      }
+    };
+    window.addEventListener("click", handleMenuClose);
+
+    return () => {
+      window.removeEventListener("click", handleMenuClose);
+    };
+  }, []);
+
   return (
     <nav>
       <div className="nav__container">
@@ -28,13 +45,7 @@ const Nav = ({ numberOfItems }) => {
             </Link>
           </li>
           <li className="nav__list">
-            <Link
-              to="/books"
-              onClick={(event) => {
-                  closeMenu(event);
-              }}
-              className="nav__link"
-            >
+            <Link to="/books" className="nav__link">
               Books
             </Link>
           </li>
@@ -56,17 +67,17 @@ const Nav = ({ numberOfItems }) => {
           </button>
           <ul className="menu__links">
             <li className="menu__list">
-              <Link to="/" className="menu__link">
+              <Link to="/" className="menu__link" onClick={closeMenu}>
                 Home
               </Link>
             </li>
             <li className="menu__list">
-              <Link to="/books" className="menu__link">
+              <Link to="/books" className="menu__link" onClick={closeMenu}>
                 Books
               </Link>
             </li>
-            <li className="menu__list">
-              <Link to="/" className="menu__link">
+            <li className="menu__list" onClick={closeMenu}>
+              <Link to="/cart" className="menu__link">
                 Cart
               </Link>
             </li>
