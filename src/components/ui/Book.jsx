@@ -6,7 +6,7 @@ import Ratings from "../ui/Rating";
 const Book = ({ book }) => {
   const [img, setImg] = useState();
 
-  const mountedRef = useRef(true); 
+  const mountedRef = useRef(true);
 
   useEffect(() => {
     const image = new Image();
@@ -19,7 +19,9 @@ const Book = ({ book }) => {
       }, 700);
     };
     return () => {
-      mountedRef.current = false; 
+      mountedRef.current = false;
+      // FOR THIS TO WORK ON LOCAL HOST MAKE SURE IT IS SET TO; mountedRef.current = true;
+      // IF THIS IS ON; mountedRef.current = false, IT WILL WORK ON VERCEL IF NOT IT WILL NOT WORK.
     };
   }, [book.url]);
 
