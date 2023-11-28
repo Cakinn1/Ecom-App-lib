@@ -8,6 +8,7 @@ import BookInfo from "./pages/BookInfo";
 import Book from "./components/ui/Book";
 import Cart from "./pages/Cart";
 import React, { useEffect, useState } from "react";
+import Loading from "./components/Loading";
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -30,49 +31,62 @@ function App() {
   }
 
   function removeItem(item) {
-    setCart(cart.filter(book => book.id !== item.id))
+    setCart(cart.filter((book) => book.id !== item.id));
   }
 
-function numberOfItems () {
-  let counter = 0
-  cart.forEach(item => {
-    counter += item.quantity
-  })
-  return counter
-}
-
+  function numberOfItems() {
+    let counter = 0;
+    cart.forEach((item) => {
+      counter += item.quantity;
+    });
+    return counter;
+  }
 
   useEffect(() => {
     console.log(cart);
   }, [cart]);
 
+  const [isLoading, setIsLoading] = useState(true);
+
+  // useEffect(() => {
+  //   setIsLoading(true);
+
+  //   setTimeout(() => {
+  //     setIsLoading(false);
+  //   }, 2000);
+  // }, []);
+
   return (
     <Router>
-      <div className="App">
-        <Nav numberOfItems={numberOfItems()} />
-        <Routes>
-          <Route path="/" exact element={<Home />} />
-          <Route path="/books" exact element={<Books books={books} />} />
-          <Route
-            path="/books/:id"
-            element={
-              <BookInfo books={books} addToCart={addToCart} cart={cart} />
-            }
-          />
-          <Route
-            path="/cart"
-            element={
-              <Cart
-                books={books}
-                cart={cart}
-                changeQuantity={changeQuantity}
-                removeItem={removeItem}
-              />
-            }
-          />
-        </Routes>
-        <Footer />
-      </div>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <div className="App">
+          <Nav numberOfItems={numberOfItems()} />
+          <Routes>
+            <Route path="/" exact element={<Home />} />
+            <Route path="/books" exact element={<Books books={books} />} />
+            <Route
+              path="/books/:id"
+              element={
+                <BookInfo books={books} addToCart={addToCart} cart={cart} />
+              }
+            />
+            <Route
+              path="/cart"
+              element={
+                <Cart
+                  books={books}
+                  cart={cart}
+                  changeQuantity={changeQuantity}
+                  removeItem={removeItem}
+                />
+              }
+            />
+          </Routes>
+          <Footer />
+        </div>
+      )}
     </Router>
   );
 }
