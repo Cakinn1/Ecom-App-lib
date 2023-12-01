@@ -48,8 +48,6 @@ function App() {
 
   const [isLoading, setIsLoading] = useState(true);
 
-  // add thatif window.onload (we just reloaded the page that we go to the top 0 pixels)
-  // add if yo click on a button to load at the very top of the screen
 
 
   useEffect(() => {
@@ -58,7 +56,7 @@ function App() {
     setTimeout(() => {
       setIsLoading(false);
       document.body.style.overflow = "auto";
-    }, 3000);
+    }, 2000);
   }, []);
 
   return (

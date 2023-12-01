@@ -830,15 +830,18 @@ select {
   overflow: hidden;
   min-height: 100vh;
   height: 100%;
-  width: 100%; 
-  color: #fff;
+  width: 100%;
+  color: black;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(115, 66, 214);
+  text-align: center;
+  /* background-color: rgb(115, 66, 214); */
+  background-color: white;
   font-size: 56px;
   position: absolute;
   z-index: 9999;
+  flex-direction: column;
 }
 
 .animate__loading {
@@ -851,10 +854,10 @@ select {
 
 @keyframes fadedown {
   0% {
-    transform: translateY(0%);
+    opacity: 1;
   }
   100% {
-    transform: translateY(100%);
+    opacity: 0;
   }
 }
 
@@ -865,4 +868,25 @@ select {
   100% {
     rotate: 360deg;
   }
+}
+
+.img__loading {
+  height: 128px;
+  width: 128px;
+  color: #7342d6;
+}
+
+.progress__loading {
+  width: 265px;
+  background-color: #f4afa1;
+  overflow: hidden;
+  height: 12px;
+}
+
+.h1__Loading {
+  font-weight: 700;
+  margin: 12px 0;
+}
+.h1__Loading > span {
+  color: #7342d6;
 }
