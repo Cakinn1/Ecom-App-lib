@@ -21,6 +21,7 @@ This project was built using these technologies:
 - Filtering cart
 - Purchasing books
 - Sorting via users select
+- Routing via React-router-dom
 - Clean, maintainable & scalable code.
 
 ## Getting Started
