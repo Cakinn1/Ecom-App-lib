@@ -22,6 +22,7 @@ This project was built using these technologies:
 - Purchasing books
 - Sorting via users select
 - Routing via React-router-dom
+- Fully responsive
 - Clean, maintainable & scalable code.
 
 ## Getting Started
